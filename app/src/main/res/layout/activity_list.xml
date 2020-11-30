@@ -4,11 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ListActivity">
 
-<ListView
-    android:id="@+id/listView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="18dp" />
+
+    <Button
+        android:id="@+id/bLocal"
+        android:layout_width="188dp"
+        android:layout_height="41dp"
+        android:background="@drawable/roundbutton"
+        android:text="My Location"
+        app:icon="@drawable/localizacao"
+        android:layout_gravity="center_horizontal"/>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="665dp" />
 
 </LinearLayout>
+
+

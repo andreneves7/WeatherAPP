@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
+    android:background="@drawable/back"
     >
 
     <ImageView
@@ -18,14 +19,16 @@
         android:layout_marginEnd="125dp"
         android:layout_marginBottom="494dp"
         android:contentDescription="TODO"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_launcher"
+        />
 
     <RelativeLayout android:id="@+id/mainContainer" android:layout_width="match_parent"
         android:layout_height="match_parent" android:visibility="visible">
 
         <LinearLayout android:id="@+id/addressContainer" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            >
             <TextView android:id="@+id/address" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:textSize="24dp"
                 android:text="DHAKA, BD"/>
@@ -36,7 +39,8 @@
 
         <LinearLayout android:id="@+id/overviewContainer" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:orientation="vertical"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            android:background="#3CF1EBF1">
 
 
 
@@ -48,7 +52,8 @@
             <TextView android:id="@+id/temp" android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:textSize="90dp"
                 android:fontFamily="sans-serif-thin" android:layout_gravity="center"
-                android:text="29°C"/>
+                android:text="29°C"
+                />
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="horizontal" android:gravity="center">
@@ -142,14 +147,8 @@
                         android:layout_height="wrap_content" android:textSize="14dp"
                         android:text="06:40 AM"/>
                 </LinearLayout>
-                <Space android:layout_width="10dp" android:layout_height="wrap_content"/>
-                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:layout_weight="1"
-                    android:gravity="center" android:padding="8dp"
-                    android:background="#3CF1EBF1">
 
 
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
