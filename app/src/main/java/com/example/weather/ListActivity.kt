@@ -37,80 +37,6 @@ class ListActivity : AppCompatActivity() {
         listView = findViewById(R.id.listView)
         var list = mutableListOf<Model>()
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
-
-
-
-        locationCallback = object : LocationCallback() {
-            override fun onLocationResult(p0: LocationResult) {
-                super.onLocationResult(p0)
-
-                lastLocation = p0.lastLocation
-
-            }
-        }
-
-
-        createLocationRequest()
-
-        localizacao = findViewById(R.id.bLocal)
-
-        localizacao.setOnClickListener {
-
-            fusedLocationClient.lastLocation
-                .addOnSuccessListener { location: Location? ->
-
-                    if (location != null) {
-                        lastLocation = location
-                        Log.d("Mapa", "$lastLocation}")
-                        Log.d("Mapa", "latitude ${location.latitude}}")
-                        Log.d("Mapa", "longitude ${location.longitude}}")
-                        latitude = location.latitude.toDouble()
-                        longitude = location.longitude.toDouble()
-                        val marca = 1
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra("marca", marca.toString())
-                        intent.putExtra("latitude", latitude.toString())
-                        intent.putExtra("longitude", longitude.toString())
-
-                        startActivity(intent)
-                    }
-                }
-
-
-
-
-
-        }
-
-
-
-
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-
-
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                ListActivity.Location_Result_Code
-            )
-
-            return
-        }
-
-
-
         list.add(Model("London", R.drawable.london))
         list.add(Model("Lisboa", R.drawable.portugal))
         list.add(Model("Madrid", R.drawable.madrid))
@@ -209,6 +135,82 @@ class ListActivity : AppCompatActivity() {
             }
 
         }
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+
+
+
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(p0: LocationResult) {
+                super.onLocationResult(p0)
+
+                lastLocation = p0.lastLocation
+
+            }
+        }
+
+
+        createLocationRequest()
+
+        localizacao = findViewById(R.id.bLocal)
+
+        localizacao.setOnClickListener {
+
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+
+                    if (location != null) {
+                        lastLocation = location
+                        Log.d("Mapa", "$lastLocation}")
+                        Log.d("Mapa", "latitude ${location.latitude}}")
+                        Log.d("Mapa", "longitude ${location.longitude}}")
+                        latitude = location.latitude.toDouble()
+                        longitude = location.longitude.toDouble()
+                        val marca = 1
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("marca", marca.toString())
+                        intent.putExtra("latitude", latitude.toString())
+                        intent.putExtra("longitude", longitude.toString())
+
+                        startActivity(intent)
+                    }
+                }
+
+
+
+
+
+        }
+
+
+
+
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+
+
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                ),
+                ListActivity.Location_Result_Code
+            )
+
+            return
+        }
+
+
+
+
 
     }
 
